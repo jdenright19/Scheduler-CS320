@@ -150,19 +150,19 @@ public class TestScheduler
 			for (int p = 0; p < tempSize; p++)
 			{
 				
-				int tempNum = int.Parse(jobDict[p].Duration);
+				int tempNum = int.Parse(jobDict[p].arrivalTime);
 				
 				if (tempVal > tempNum)
 				{
 							tempVal = tempNum;
 							tempIncrement = p;
-							turnAroundTime += tempVal;
+							turnAroundTime += int.Parse(jobDict[p].Duration);
 							responseTime++;
 							
 				}
 				if (p == tempSize - 1)
 				{
-					Console.WriteLine("Added increment " + tempIncrement + " with the shortest time of" + tempVal);
+					Console.WriteLine("Added increment " + tempIncrement + " with the shortest arrival time of" + tempVal);
 					//jobDict.Remove(tempIncrement);
 				}
 			
@@ -185,19 +185,19 @@ public class TestScheduler
 				else
 				{
 					
-				int tempNum1 = int.Parse(jobDict[l].Duration);
+				int tempNum1 = int.Parse(jobDict[l].arrivalTime);
 				
 				if (tempVal1 > tempNum1)
 				{
 							tempVal1 = tempNum1;
 							tempIncrement1 = l;
-							turnAroundTime += tempVal1;
+							turnAroundTime += int.Parse(jobDict[l].Duration);
 							responseTime++;
 							//arrayIncrement++;
 				}
 				if (l == tempSize1 - 1)
 				{
-					Console.WriteLine("Added increment " + tempIncrement1 + " with the shortest time of" + tempVal1);
+					Console.WriteLine("Added increment " + tempIncrement1 + " with the shortest arrival time of " + tempVal1);
 					//jobDict.Remove(tempVal);
 				}
 				}
@@ -220,19 +220,19 @@ public class TestScheduler
 				else
 				{
 					
-				int tempNum1 = int.Parse(jobDict[l].Duration);
+				int tempNum1 = int.Parse(jobDict[l].arrivalTime);
 				
 				if (tempVal1 > tempNum1)
 				{
 							tempVal1 = tempNum1;
 							tempIncrement2 = l;
-							turnAroundTime += tempVal1;
+							turnAroundTime += int.Parse(jobDict[l].Duration);
 							responseTime++;
 							//arrayIncrement++;
 				}
 				if (l == tempSize1 - 1)
 				{
-					Console.WriteLine("Added increment " + tempIncrement2 + " with the shortest time of" + tempVal1);
+					Console.WriteLine("Added increment " + tempIncrement2 + " with the shortest arrival time of" + tempVal1);
 					//jobDict.Remove(tempVal);
 				}
 				}
@@ -241,10 +241,13 @@ public class TestScheduler
 			}
 			
 			jobDict.Remove(tempIncrement2);
-			Console.WriteLine("Removed " + tempVal1);
+			//Console.WriteLine("Removed " + tempVal1);
 			Console.WriteLine("Total TurnAroundTime Was " + turnAroundTime);
 			Console.WriteLine("Total Wait Time Was " + waitTime);
 			Console.WriteLine("Total Response Time Was " + responseTime);
+			Console.WriteLine("Average TurnAroundTime Was " + turnAroundTime / 4);
+			Console.WriteLine("Average Wait Time Was " + waitTime / 4);
+			Console.WriteLine("Average Response Time Was " + responseTime / 4);
 
 	}
 }
